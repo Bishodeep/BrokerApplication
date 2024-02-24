@@ -5,6 +5,7 @@ using MediatR;
 
 namespace clean.Application.Features.Authentication.Register.Command
 {
+    
     public class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, ResponseModel>
     {
         private readonly IIdentityService _identityService;

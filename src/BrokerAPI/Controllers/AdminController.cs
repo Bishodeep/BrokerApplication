@@ -14,7 +14,12 @@ namespace BrokerAPI.Controllers
         [HttpPost("Register")]
         public async Task<ActionResult<ResponseModel>> Register(RegisterUserDto registerUserDto, CancellationToken cancellationToken)
         {
-            return Ok(await Mediator.Send(new RegisterUserCommand { RegisterUserDto = registerUserDto }, cancellationToken));
+            return await Mediator.Send(new RegisterUserCommand { RegisterUserDto = registerUserDto }, cancellationToken);
+        }
+        [HttpGet("Roles")]
+        public async Task<ActionResult<List<RolesDto>>> GetRoles()
+        {
+            return await Mediator.Send(new GetRolesQuery());
         }
     }
 }

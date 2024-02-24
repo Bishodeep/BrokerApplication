@@ -4,8 +4,8 @@ using clean.Application.Common.Models;
 using clean.Application.Common.Models.Authentication;
 using clean.Application.Contracts.Services;
 using clean.Infrastructure.Extensions;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.JsonWebTokens;
 using System.Data;
 using System.Security.Claims;
@@ -85,6 +85,17 @@ public class IdentityService : IIdentityService
         claims.AddRange(roles.Select(role => new Claim(ClaimsIdentity.DefaultRoleClaimType, role)));
 
         return claims;
+    }
+
+    public async Task<List<RolesDto>> GetAllRolesAsync()
+    {
+        var roles= await _roleManager.Roles.ToListAsync();
+        var rolesDto = new List<RolesDto>();
+        foreach (var item in roles)
+        {
+            rolesDto.Add( new RolesDto { Name=item.Name,Id=item.Id});
+        }
+        return rolesDto;
     }
 
     #endregion

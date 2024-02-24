@@ -10,4 +10,5 @@ public interface IIdentityService
     Task<LoginResponseDto> AuthenticateAsync(string userName, string password);
 
     Task<(Result Result, string UserId)> CreateUserAsync(RegisterUserDto registerUserDto, CancellationToken cancellationToken);
+    Task<List<RolesDto>> GetAllRolesAsync();
 }

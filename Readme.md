@@ -6,6 +6,7 @@ This application show case .net 6 api build following clean Architecture.<br>
 
 .net sdk 6
 visual studio /visual studio code
+SQL server
 
 # Setps to run.
 
@@ -17,7 +18,7 @@ visual studio /visual studio code
 4. dotnet run
    Application should be up and running and details of api documentation should be should in swagger.
 
-As keeping comments in code is a bad practise and creates code smells. Here is the descriptions of different layers in clean architecture.
+As keeping comments in code is a bad practise and creates code smells. Here is the short descriptions of different layers in clean architecture.
 
 Domain Layer:
 It is the most inner most layer of architecture. It holds the main domain information. All the other layers are build on top of domain layer. This layes holds entities, enums for schemas, data objects. All these components are the core definition of the application.
@@ -33,3 +34,11 @@ It is the client facing layer. This layer can be api, mvc or someother client fa
 
 Mediatr patter.
 It is way of seperating the requests whether into command or query. All the requests are sperated and handled seperately in their own hanlders.
+
+Application functions:
+
+1.  One super adim is seeded for creation of broker as well as normal users using different roles.
+2.  Once broker is created then brokers can create properties , update them as well as delete.
+3.  Normal users can only view properties.
+
+Note: This is done so that project can be completed with in given time frame. A lot of functionalities are self assumed and can be cleared during interview.
